@@ -4,10 +4,14 @@ CURRENT_DIR=$(pwd)
 
 source "$CURRENT_DIR/zshlilly.zsh"
 
-INSTALL_BASE=/usr/local/lib
+if [ $# -ge 1 ]; then
+    INSTALL_BASE="$1"
+else
+    INSTALL_BASE=/usr/local/lib
+fi
 
 if ! dir_exists $INSTALL_BASE; then
-	mkdir /usr/local/lib
+	mkdir $INSTALL_BASE
 fi
 
 INSTALL_DIR=$INSTALL_BASE/zshlilly/

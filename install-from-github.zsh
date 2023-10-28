@@ -7,10 +7,14 @@ CURRENT_DIR=$(pwd)
 chmod a+x "$CURRENT_DIR/zshlilly-master/zshlilly.zsh"
 source "$CURRENT_DIR/zshlilly-master/zshlilly.zsh"
 
-INSTALL_BASE=/usr/local/lib
+if [ $# -ge 1 ]; then
+    INSTALL_BASE="$1"
+else
+    INSTALL_BASE=/usr/local/lib
+fi
 
 if ! dir_exists $INSTALL_BASE; then
-	mkdir /usr/local/lib
+	mkdir $INSTALL_BASE
 fi
 
 INSTALL_DIR=$INSTALL_BASE/zshlilly/
